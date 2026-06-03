@@ -1,0 +1,32 @@
+ofdm:
+  n_subcarriers: 64
+  cp_length: 16
+  n_pilots: 8
+  n_symbols: 14
+  modulation: QPSK
+
+channel:
+  model: rayleigh        # rayleigh | rician | etu
+  n_taps: 4
+  k_factor: 3.0          # Rician only
+
+dataset:
+  n_samples: 5000
+  snr_min: 0
+  snr_max: 30
+  train_frac: 0.70
+  val_frac: 0.15
+  seed: 42
+
+training:
+  arch: cnn              # cnn | mlp
+  epochs: 50
+  batch_size: 32
+  lr: 0.001
+  save_path: models_saved/channelnet.pth
+
+evaluation:
+  snr_min: 0
+  snr_max: 30
+  snr_step: 3
+  n_trials: 300
